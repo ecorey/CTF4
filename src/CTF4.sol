@@ -1,6 +1,12 @@
+// Level 4 - Powers of 2
+// Using the Isolution4 interface write a function that takes a uint256 value and returns the 
+// greatest power of 2, (2 ^ n) that is less than or equal to the input value. 
+// The input value is a number between 2^0 and 2^256 -1
+
+
 //SPDX-License-Identifier:MIT
 
-pragma solidity 0.8.17;
+pragma solidity 0.8.21;
 
 // stdin: 1                     stdout: 1 or 2**0
 // stdin: 10                    stdout: 8 or 2**3
@@ -11,13 +17,22 @@ pragma solidity 0.8.17;
 interface Isolution4 {
     function solution(uint256 number) external pure returns (uint256);
 }
+
+
 contract CTF4 is Isolution4 {
 
    
     function solution (uint256 number) external override pure returns (uint256){
       
-     
-       
+        require(number >= 0, "Number must be greater than or equal to 0");
+
+        uint256 greatestPOW = 1;
+
+        while (greatestPOW * 2 <= number) {
+            greatestPOW *= 2;
+        }
+        
+        return greatestPOW;
     }
 
 
