@@ -17,6 +17,7 @@ interface Isolution {
 **Deploy:**
 
 **To Deploy and Run script just add private key with no double quotes**
-_forge create --rpc-url https://sepolia.gateway.pokt.network/v1/lb/ae75c2b1 --private-key xxxx src/CTF3.sol:CTF3_
+
+    _forge create --rpc-url https://sepolia.gateway.pokt.network/v1/lb/ae75c2b1 --private-key xxxx src/CTF3.sol:CTF3_
 
 **deployed to:**
