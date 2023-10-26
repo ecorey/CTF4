@@ -6,7 +6,7 @@
 
 //SPDX-License-Identifier:MIT
 
-pragma solidity 0.8.21;
+pragma solidity 0.8.17;
 
 // stdin: 1                     stdout: 1 or 2**0
 // stdin: 10                    stdout: 8 or 2**3
@@ -21,19 +21,38 @@ interface Isolution4 {
 
 contract CTF4 is Isolution4 {
 
-   
-    function solution (uint256 number) external override pure returns (uint256){
+    // function unoptimized 
+    function solutionUnoptimized (uint256 number) external pure returns (uint256){
       
-        require(number >= 0, "Number must be greater than or equal to 0");
-
+        // initialize greatestPOW to 1, which is 2^0. 
+        // this will be used to keep track of the greatest power of 2.
         uint256 greatestPOW = 1;
 
+        // This while loop will continue as long as the next power of 2 
+        // (greatestPOW * 2) is less than or equal to the input number.
         while (greatestPOW * 2 <= number) {
             greatestPOW *= 2;
         }
         
         return greatestPOW;
     }
+
+
+    // function optimized using Yul
+    // TODO
+    function solution (uint256 number) external override pure returns (uint256){
+      
+        
+        uint256 greatestPOW = 1;
+
+        while (greatestPOW * 2 <= number) {
+            greatestPOW *= 2;
+        }
+        
+
+        return greatestPOW;
+    }
+ 
 
 
 }
