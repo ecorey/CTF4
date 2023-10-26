@@ -1,7 +1,7 @@
-// Using the Isolution3 interface write a function that unpacks our data that was 
-// packed using abi.encodePacked(a, b, c).
-// Where a is type uint16, b is type bool and c is type bytes6.
-
+// Level 4 - Powers of 2
+// Using the Isolution4 interface write a function that takes a uint256 value and returns the 
+// greatest power of 2, (2 ^ n) that is less than or equal to the input value. 
+// The input value is a number between 2^0 and 2^256 -1
 
 
 //SPDX-License-Identifier:MIT
