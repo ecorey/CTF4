@@ -21,38 +21,50 @@ interface Isolution4 {
 
 contract CTF4 is Isolution4 {
 
-    // function unoptimized 
-    function solutionUnoptimized (uint256 number) external pure returns (uint256){
+   
+    // function solutionUnoptimized (uint256 number) external pure returns (uint256){
       
-        // initialize greatestPOW to 1, which is 2^0. 
-        // this will be used to keep track of the greatest power of 2.
-        uint256 greatestPOW = 1;
+    //     uint256 greatestPOW = 1;
 
-        // This while loop will continue as long as the next power of 2 
-        // (greatestPOW * 2) is less than or equal to the input number.
-        while (greatestPOW * 2 <= number) {
-            greatestPOW *= 2;
+    //     while (greatestPOW * 2 <= number) {
+    //         greatestPOW *= 2;
+    //     }
+
+    //     return greatestPOW;
+    // }
+
+
+    function solution(uint256 number2) public pure override returns (uint256) {
+        uint256 counter = 0;
+        uint256 greatestPOW = 1;
+        uint256 answer;
+        
+        assembly {
+            // initialize loop variable i to 0
+            let i := 0
+
+            // loop with a maximum iteration check as a fail-safe (in this case 256 to account for uint256's size)
+            for { } lt(i, 256) { i := add(i, 1) }
+            {
+                // Check the condition for greatestPOW
+                if gt(mul(greatestPOW, 2), number2) {
+                    // exit the loop if the next doubling of greatestPOW would exceed number2
+                    break
+                }
+
+                // double greatestPOW
+                greatestPOW := mul(greatestPOW, 2)
+
+                // increment counter
+                counter := add(counter, 1)
+            }
+            answer := greatestPOW
         }
         
-        return greatestPOW;
+        return answer;  
     }
 
 
-    // function optimized using Yul
-    // TODO
-    function solution (uint256 number) external override pure returns (uint256){
-      
-        
-        uint256 greatestPOW = 1;
-
-        while (greatestPOW * 2 <= number) {
-            greatestPOW *= 2;
-        }
-        
-
-        return greatestPOW;
-    }
- 
 
 
 }
