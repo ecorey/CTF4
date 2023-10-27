@@ -21,17 +21,6 @@ interface Isolution4 {
 
 contract CTF4 is Isolution4 {
 
-   
-    // function solutionUnoptimized (uint256 number) external pure returns (uint256){
-      
-    //     uint256 greatestPOW = 1;
-
-    //     while (greatestPOW * 2 <= number) {
-    //         greatestPOW *= 2;
-    //     }
-
-    //     return greatestPOW;
-    // }
 
 
     function solution(uint256 number2) public pure override returns (uint256) {

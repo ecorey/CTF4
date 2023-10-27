@@ -21,3 +21,16 @@ interface Isolution {
     forge create --rpc-url https://sepolia.gateway.pokt.network/v1/lb/ae75c2b1 --private-key xxxx src/CTF3.sol:CTF3
 
 **deployed to:**
+
+**Solution Unoptimized:**
+
+     function solutionUnoptimized (uint256 number) external pure returns (uint256){
+
+         uint256 greatestPOW = 1;
+
+         while (greatestPOW * 2 <= number) {
+             greatestPOW *= 2;
+         }
+
+         return greatestPOW;
+     }
