@@ -7,7 +7,7 @@ interface Isolution4 {
     function solution(uint256 number) external pure returns (uint256);
 }
 
-
+// REDO FUNCTIONS 
 contract CTF4 is Isolution4 {
 
 
@@ -16,7 +16,7 @@ contract CTF4 is Isolution4 {
 
          uint256 greatestPOW = 1;
 
-         while (greatestPOW * 2 <= number) {
+         while (greatestPOW ** 2 <= number) {
              greatestPOW *= 2;
          }
 
